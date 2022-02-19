@@ -1,0 +1,1041 @@
+Day1 react:25/1/22
+
+const [g1,g2,g3=40]=[5,6,null];
+console.log(g1,g2,g3);
+
+ternary operator
+Ternary operator is an expression ,returns some value.
+
+const msg=5>4?"awesome" :"cool";
+console.log(msg);
+
+if...else - is a statement , it doesn't return.
+let msg1;
+if(5>4){
+    msg1="awesome";
+}else{
+    msg1="cool";
+}
+
+
+var t=6*7;//expression
+
+const student={
+    firstname:"kishore",
+    lastname:"sankar"
+};
+
+result: welcome sankar,kishore!!
+function fullname should take student->return abouve result
+emoji ->window+.
+${}- interpolation ,template litral-``
+
+function fullname(student){
+    
+    return (`welcome ${student.lastname}, ${student.firstname} 😍!!!`);
+    
+}
+console.log(fullname(student));
+
+object destructuring
+
+let fname=student.firstname;
+let lname=student.lastname;
+
+function fullname(fname,lname){
+    
+    return (`welcome ${fname}, ${lname} 😍!!!`);
+    
+}
+console.log(fullname(fname,lname));
+
+
+object destruction;
+
+function fullname(student){
+    const{firstname,lastname}=student;
+    const msg=`welcome ${lastname},${firstname}❤!!`;
+    return msg;
+}
+console.log(fullname(student));
+
+
+
+function fullname({firstname,lastname}){
+    return `welcome ${lastname},${firstname}❤!!`;
+    
+}
+console.log(fullname(student));
+
+object destructuring and one line- arrow function.
+
+
+const fullname=({firstname,lastname})=>`welcome ${lastname},${firstname}❤!!`;
+console.log(fullname(student));
+
+
+function fullname(student){
+const msg="welcome"+student.lastname +','+student.firstname +"😊!!!"
+return msg;
+}
+
+code quality-5pillars
+ 1.Readabilty - 70% code reading
+ 2.Maintainability- reuse 
+ 3.Extensiblity-feature
+ 4.testability
+ 5.performace - less memory, faster execution
+
+DRY - Don't Repeat Yourself
+template literal, object destructing, arrow function 
+
+const nums=[4,10,6,100]; 
+o/p:[8,10,12,200]
+
+Map
+expected o/p=map
+input arr length===output arr length
+returns a new array(copy)
+transformation(changing data type)Array of strings -> Array of numbers
+
+
+nameless function -> anonymous function;
+
+const sqrt=nums.map((ele)=>ele*2);
+console.log(sqrt)
+
+const db1=n=>n*2;
+console.log(nums.map(db1));
+
+const names=['eswar','hudha malick','kabilan','amurtha'];//o/p:[5,12,7,7]
+const db2=ele=>ele.length;
+console.log(names.map(db2));// transformation the string into number
+
+const student=[{
+    firstname:'kishore',
+    lastname:'sankar'
+},{
+    firstname:'bala',
+    lastname:'manikandan'
+},{
+    firstname:'arthi',
+    lastname:'karunanithi'
+},{
+    firstname:'arul',
+    lastname:'selvi'
+}
+];
+
+Array of objects to Array of strings
+const fullname=({lastname,firstname})=>`welcome ${lastname},${firstname}😊!!`
+console.log(student.map((stu)=>fullname(stu)));
+
+console.log(student.map(
+    ({lastname,firstname})=>`welcome ${lastname},${firstname}😊!!`
+    ));
+console.log(student.map(fullname));
+expected output
+
+    "welcome sankar,kishore😊!!!",
+    "welcome manikandan,bala😊!!!",
+    "welcome karunanithi,arthi😊!!!",
+    "welcome selvi,arul😊!!!",
+]
+
+Array destructuring:
+const [name,age]=[15,'aaron mathias'];
+console.log(name,age);
+
+Object destructuring
+const {name,age}={age:15,name:'aaron mathias'};
+console.log(name,age);
+
+in object destructuring it will match with the key and value then it will match.
+in array destructuring it will match with the index then it will match.
+
+rename name -> fun
+const {name:fun,age}={age:15,name:'aaron mathias'};
+console.log(name,age);
+
+
+REACT INITIAL SETUP;
+
+https://docs.google.com/presentation/d/1lOqzOJSFyLzwpBXH_VhHomgehXezDKjCosrmv5iCRm4/edit#slide=id.gf976ff8922_0_0
+
+
+DAY:2 ;25/1/2022;
+
+import "./styles.css";
+
+// App -> component
+// to use variable should use template syntax{}
+
+// declaration
+
+FEAUTRES OF REACT;
+
+spa - single page application
+reusability - one fingerprint can make many object
+
+REACT COMPONENT;
+
+component = jsx+css+logic
+
+jsx- javaxcript xml
+
+jsx is the format of the react.
+
+webpack/babel - translator/compiler is used to convert jsx into pure js.
+
+template syntax{} - used to use variable name.
+
+// to write component
+// the first letter should be  capital
+// it should written only atleast one jsx element and also must one jsx element
+// export default function App() {
+//   return (
+//     <div className="App">
+//       <Welcome />
+//       <Welcome />
+//       <Welcome />
+//     </div>
+//   );
+// }
+
+// function Welcome() {
+//   const name = "pugal";
+//   return (
+//     <div className="welcome">
+//       <h1>Hello {name}</h1>
+//     </div>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <div className="App">
+//       <Welcome name="pugal" />
+//       <Welcome name="aravind" />
+//       <Welcome name="chandra" />
+//     </div>
+//   );
+// }
+
+// function Welcome(props) {
+//   // const name = "pugal";
+//   console.log(props);
+//   return (
+//     <div className="welcome">
+//       <h1>Hello {props.name}</h1>
+//     </div>
+//   );
+// }
+
+export default function App() {
+  return (
+    <div className="App">
+      <Welcome name="pugal" />
+      <Welcome name="aravind" />
+      <Welcome name="jaya" />
+    </div>
+  );
+}
+
+function Welcome({ name }) {
+  // const name = "pugal";
+  // destructured
+  return (
+    <div className="welcome">
+      <h1>Hello {name}</h1>
+    </div>
+  );
+}
+
+
+DAY : 3 -28/1/2022;
+
+
+HOW TO IDENTIFY COMPONENT;
+
+should return one jsx element
+comoponent name should be start with capital
+
+PROPS;(properties)
+
+parameter is called as a props in react;
+props is used to customise something in component.
+props is always a object.
+direct destructuring.
+
+object-fit : cover - is used to fit image to width and height
+
+
+// import React from "react";
+// import logo from "./images.jfif";
+// import "./styles.css";
+
+// export default function App() {
+//   return (
+//     <div className="App">
+//       <Welcome name="VIRAT KHOLI 🎉👏" />
+//       <Welcome name="DHONI 🎉👏" />
+//       <Welcome name="RISHABH PANT 🎉👏" />
+//     </div>
+//   );
+// }
+// function Welcome({ name }) {
+//   return (
+//     <div>
+//       <h2>Hello {name}</h2>
+//       <img src={logo} />;
+//     </div>
+//   );
+// }
+
+// import "./styles.css";
+
+// export default function App() {
+//   return (
+//     <div className="App">
+//       <Welcome
+//         name="VIRAT KHOLI 🎉👏"
+//         profile="https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg"
+//       />
+//       <Welcome
+//         name="DHONI 🎉👏"
+//       />
+//       <Welcome
+//         name="RISHABH PANT 🎉👏"
+//         profile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97cDME69LR13k2h7zFFzea6xhmFR-PdVjFUT--Kkpq2Hjs3jZVt1P6DfZpjYkkwXOXLY&usqp=CAU"
+//       />
+//     </div>
+//   );
+// }
+// function Welcome({ name, profile }) {
+//   return (
+//     <div>
+//       <h2>Hello {name}</h2>
+//       <img className="pic" src={profile} />
+//       ;""
+//     </div>
+//   );
+// }
+
+
+// import "./styles.css";
+// export default function App() {
+//   const names = ["ARAVIND", "PUGAL", "JAYA"];
+//   return (
+//     <div className="App">
+//       {names.map(nm => <Msg name={nm} />)}
+//     </div>
+//   );
+// }
+// function Msg({name}) {
+//   return (
+//     <div>
+//       <h2>Hello {name}</h2>
+//     </div>
+//   );
+// }
+
+
+import "./App.css";
+export default function App() {
+  const names = [
+    {
+      name: "VIRAT KHOLI 🎉👏",
+      profile:
+        "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg"
+    },
+    {
+      name: "DHONI 🎉👏",
+      profile:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97cDME69LR13k2h7zFFzea6xhmFR-PdVjFUT--Kkpq2Hjs3jZVt1P6DfZpjYkkwXOXLY&usqp=CAU"
+    },
+    {
+      name: "RISHABH PANT 🎉👏",
+      profile:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97cDME69LR13k2h7zFFzea6xhmFR-PdVjFUT--Kkpq2Hjs3jZVt1P6DfZpjYkkwXOXLY&usqp=CAU"
+    }
+  ];
+  return (
+   <div className="App">
+           {names.map(nm => <Welcome name={nm.name} profile={nm.profile}/>)}
+  </div>
+  )
+}
+function Welcome({ name, profile }) {
+  return (
+    <div>
+      <h2>Hello {name}</h2>
+      <img className="pic" src={profile} />
+    </div>
+  );
+}
+
+
+npm start - to start react app.
+ctrl+c = to stop react app.
+npm run build - to build app.
+
+
+2/2/2022;
+
+IMMUTABILITY;
+
+should not affect original values of variable.
+should use const
+
+ARRAY DESTRUCUTRING;
+
+const arr =[1,2,3]
+const arr1 = [...arr,4]
+
+console.log(arr)
+console.log(arr1)
+
+INLINE CSS IN REACT;
+
+
+function Movies({banner,title}){
+  const[like,setlike] =useState(0);
+  const[dislike,dellike] =useState(0);
+
+  const style ={
+    color :like >5 ?"red" : "green",
+    color :dislike >5 ?"red" : "green"
+  }
+    return (
+      <div>
+         <div className='card'>
+               <img className='card-img-top' src={banner}></img>
+               <div  className='card-body'>
+               <h6  className='card-title'>{title}</h6>
+                  <div className='like'>
+                   <i style={style} onClick={()=>{setlike(like+1)}} className='fa fa-thumbs-o-up' ><h6>{like}</h6></i>
+                   <i style={style} onClick={()=>{dellike(dislike+1)}} className='fa fa-thumbs-o-down'><h6>{dislike}</h6></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+    )
+}
+
+
+CONDITIONAL STYLING ;
+
+const style ={
+    color :like >5 ?"red" : "green",
+    color :dislike >5 ?"red" : "green"
+  }
+
+  put style={style} as inline css;
+
+FEBRUARY-3 ;
+
+WAY OF HIDING AND SHOWING CONTENT;
+
+const summarystyles ={
+    display :show ?"block" : "none",
+};
+
+const[show,setshow] = usestate(true);
+
+style ={summarystyle} onclick={()=>setshow(!show)}
+
+CONDITIONAL RENDERING;
+
+const[show,setshow] = usestate(true);
+
+{show ? <p className ="summary">{summary}</p>:""}
+
+
+
+
+
+
+REACT;
+
+// COMPONENT;
+
+//   component name should start with capital letter.
+//   component should atleast one jsx element and must return only one jsx element.
+
+
+BASIC COMPONENT EXAMPLE;
+
+function Myname(){
+  
+   return (
+    <div>
+    <h1>pugalenthi</h1>
+  </div>
+   )
+
+}
+
+CALLING A COMPONENT ;
+<Myname />
+
+
+PROPS INTO COMPONENT;
+
+function Myname({name}){
+
+   return (
+     <div>
+       <h1>{name}</h1>
+     </div>
+   )
+}
+
+CALLING A COMPONENT;
+
+let name = "pugal" in app component.
+<Myname name ={name} />
+
+USING MAP FUNCTION WITH ARRAY OF VALUES IN COMPONENT;
+
+{names.map((names) => <DisplayNames name={names} />)  }
+
+CALLING COMPONENT VALUES FROM THE OBJECT;
+
+ <DisplayNames fullname= {bio.fullname} fname = {bio.fname} mname = {bio.mname}/>
+
+
+CALLING A COMPONENT TO ARRAY OF OBJECTS;
+
+ {bio.map((bio)=><DisplayNames fullname= {bio.fullname} fname = {bio.fname} mname = {bio.mname}/>)} 
+
+STYLING FOR COMPONENT;
+
+function Styling(){
+
+  const pstyle= {
+      backgroundColor : "red",
+      color : "green"
+  }
+    return (
+      <div>
+         <h1 style={pstyle}>pugal</h1>
+      </div>
+    )
+}
+
+
+HOOKS;
+
+function FavColor(){
+  
+   const[bgcolor,SetbgColor] = useState("red")
+   const [fontcolor,SetfontColor] =useState("black")
+  const styles = {
+     backgroundColor : bgcolor,
+     color : fontcolor
+  }
+   return(
+     <div>
+       <button style={styles}  onClick={()=>{
+           SetbgColor("green")
+           SetfontColor("white")
+       }}>Change Color</button>
+     </div>
+   )
+}
+
+LIKER;
+
+function Liker(){
+  
+   const[like,setlike]= useState(1)
+   return(
+      <div>
+         <button onClick={()=>{
+           setlike(like+1) 
+         }}>👍{like}</button>
+      </div>
+   )
+}
+
+GETTING INPUT FROM USER AND USING THAT AS A INPUT FOR ANTOHER;
+
+
+function Userinput(){
+
+  const[color,setcolor] = useState("red")
+  const styles ={
+    backgroundColor : color
+  }
+   return (
+     <div>
+         <input onChange={(val)=>{
+           setcolor(val.target.value)
+         }}></input>
+         <button style={styles}>setcolor</button>
+     </div>
+   )
+}
+
+
+CONDITIONAL STYLING;
+
+
+function Liker(){
+
+   const[like,setlike]= useState(2)
+  
+   const styles ={
+       backgroundColor : like===6 ?"green":"red" 
+   }
+   console.log(like)
+   return(
+      <div>
+         <button style={styles} onClick={()=>{
+           setlike(like+1) ;
+         }}>👍{like}</button>
+      </div>
+   )
+}
+
+CONDITIONAL RENDERING;
+
+function Crendering(){
+  const res = 5>4 ?<h1>pugalenthi</h1> : <h1>aravindhan</h1>
+   return (
+       <div>
+           <p>{res}</p>
+       </div>
+   )
+}
+
+
+TOGGLE BUTTON;CONDITIONAL STYLING;
+
+const[show,setshow]=useState(false)
+  const summarystyles ={
+      display : show  ? "block": "none",
+  }
+
+
+
+ <button className='btn bg-success' onClick={()=>{
+            setshow(!show)
+          }}>Toggle description</button>
+
+ ELEMENT;
+
+<p style={summarystyles} className="card-text">{summary}</p>
+
+
+CONDITIONAL RENDERING;
+
+TOGGLEBUTTON  USING  CONDITIONALRENDERING;
+
+ const[show,setshow]=useState(false)
+
+<button className='btn bg-success' onClick={()=>{
+            setshow(!show)
+            console.log(show)
+          }}>Toggle description</button>
+
+CONDITIONAL RENDERING;
+
+ {show ? <p className="card-text">{summary}</p> : ""}
+
+alt and aria-label - is used to tell disabled persons.
+
+
+HEIGHT-MIN-CONTENT;
+
+Height min content is used to set container content according to the content.
+
+NAMED IMPORT AND  EXPORT; - most preferrable and latest.
+
+can export multiple things at a time.
+
+imports should be in start of the file.
+export should be in end of file.
+
+export function funname()
+  code
+{
+
+import { Movie } from './Movie';
+
+DEFAULT IMPORTS AND EXPORTS;
+
+export default function funname()
+{
+  code
+}
+
+import './App.css';
+
+default export system only one can be exported per file.
+
+REACT ROUTER DOM;
+
+it is used to get single and multipages benefits in one;
+
+react router  can also be called as a big conditional rendering.
+
+we are using version of react router dom VERSION-5.
+
+
+ROUTER 
+
+BROWSEROUTER -modern browser-more feautres
+
+HASH ROUTER -older browser-less feautres.
+
+1st step -import browserrouter
+
+import { BrowserRouter as Router } from "react-router-dom";
+
+import hashrouter;
+
+url always contain # symbol.
+
+import { HashRouter as Router } from "react-router-dom";
+
+step :2;
+
+wrap app in router
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("root")
+);
+
+
+SWITCHING AND ROUTING ;
+
+IN INDEX.JS;
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+APP.JS;
+
+
+import './App.css';
+// import React, { useState } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+
+function App() {
+ 
+  return (
+    <div className="container App">
+      
+     <nav className='navbar'>
+       
+          <ul className='navbar-nav mr-auto'>
+                <li className='nav-item'>
+                   <a className='nav-link' href="/about">About with anchor</a>
+                </li>
+                <li className='nav-item'>
+                <Link className='nav-link' to ="/home">home</Link>
+                </li>
+       
+                <li className='nav-item'>
+                <Link className='nav-link' to ="/about">somewhere</Link>
+                </li>
+                <li className='nav-item'>
+                <Link className='nav-link' to ="/products">products</Link>
+                </li>
+                <li className='nav-item'>
+                <Link className='nav-link' to ="/contact">contacts</Link>
+                </li>
+           </ul>
+     </nav>
+
+
+
+
+         
+         <Switch>
+                <Route path="/about">
+                    <Aboutwithanchor  />
+                </Route>
+
+                  <Route path="/home">
+                    <Home  />
+                </Route>
+
+                <Route path="/products">
+                    <Products  />
+                </Route>
+
+                <Route path="/contact">
+                    <Contact  />
+                </Route>
+
+                <Route path="/about">
+                    <About  />
+                </Route>
+              </Switch>    
+    </div>
+  );
+}
+
+
+export default App;
+
+
+function Aboutwithanchor(){
+  return (
+    <div>
+      <h1>this is about with anchor section.</h1>
+    </div>
+  )
+}
+
+
+function Anchor(){
+    return(
+      <div>
+         <h1>this is anchor section</h1>
+      </div>
+    )
+}
+
+function Home(){
+   return(
+     <div>
+       <h1>This is home section</h1>
+     </div>
+   )
+}
+
+function About(){
+   return (
+     <div>
+       <h1>this is about section</h1>
+     </div>
+   )
+  }
+
+function Products(){
+  return(
+    <div>
+      <h1>This is products section</h1>
+    </div>
+  )
+}
+
+
+
+function Contact(){
+   return(
+     <div>
+       <h1>This is contact section</h1>
+     </div>
+   )
+}
+
+
+Exact keyword in react;
+<Route exact path="/">
+            <div className="container">
+              <div className="row">
+                <h1>Welcome to 3 in 1 game</h1>
+              </div>
+            </div>
+</Route>
+
+not found route path
+<Route path="**">
+  <Notfound />
+</Route>
+
+ readirecting
+  <Route path="/films">
+  <Redirect to="/movies" />
+</Route>
+
+passing jsx in props ;
+        <div class="container">
+        <div class="row" id="movie-row">
+          {copymovie.map((info) => (
+            <Movie
+              banner={info.banner}
+              title={info.title}
+              rating={info.rating}
+              summary={info.summary}
+              deletebutton={<button>Delete me🧨🧨</button>}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{copymovie.map((info) => (
+  <Movie
+    banner={info.banner}
+    title={info.title}
+    rating={info.rating}
+    summary={info.summary}
+    deletebutton={<button>Delete me🧨🧨</button>}
+  />
+))}
+
+DELETING A SPECIFIC MOVIE FROM MOVIE Array;
+
+{copymovie.map((info,index) => (
+  <Movie
+    banner={info.banner}
+    title={info.title}
+    rating={info.rating}
+    summary={info.summary}
+    deletebutton={<button onClick={()=>{
+      console.log(index)
+      const copycopymovies= [...copymovie]
+      copycopymovies.splice(index,1)
+      SetMovies(copycopymovies)
+    }
+    }>Delete me🧨🧨</button>}
+/>
+))}
+
+if want to change url by clicking button please use -use history
+
+const history =useHistory();
+
+index=id
+
+export function Movie({ banner, title, rating, summary,deletebutton,id }) {
+
+import { useHistory } from 'react-router-dom';
+
+<h5 className="card-title">{title}{show === true ? <i onClick={() => { setshow(!show); }} class="bi bi-caret-down"></i> : <i onClick={() => { history.push(`/movies${id}`); }} class="bi bi-caret-up"></i>}<i class="bi bi-info-circle"></i> </h5>
+
+
+HTTP METHOD IN API;
+
+READ DATA;
+
+
+
+  const getMovies = () => {
+    fetch(`${API}/movies`, {
+      method: "GET",
+    }) // promise
+      .then((data) => data.json()) // Response object
+      .then((mvs) => setMovieList(mvs));
+  };
+
+
+DELETE DATA;
+
+
+  // Delete movie -> Refresh data
+  const deleteMovie = (id) => {
+    fetch(`${API}/movies/${id}`, {
+      method: "DELETE",
+    }).then(() => getMovies());
+  };
+
+
+
+
+POST METHOD;
+       
+
+    // 1. method must be POST
+    // 2. body - JSON data
+    // 3. headers - JSON data
+    // After POST is complete ->  movie to /movies
+    fetch(`${API}/movies/`, {
+      method: "POST",
+      body: JSON.stringify(newMovie),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => history.push("/movies"));
+  };
+  
+
+PUT METHOD;
+
+    // 1. method must be PUT & pass id
+    // 2. body - JSON data
+    // 3. headers - JSON data
+    // After PUT is complete ->  movie to /movies
+    fetch(`${API}/movies/${movie.id}`, {
+      method: "PUT",
+      body: JSON.stringify(updatedMovie),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => history.push("/movies"));
+  };
+  return (
+    <div>{movie ? <EditMovieForm movie={movie} /> : <h2>Loading</h2>}</div>
+  );
+
+
+
+
+  FORMIK AND YUP FORM VALIDATING LIBRARY;
+
+const formValidationSchema = yup.object({
+  email: yup
+    .string()
+    .required("Why not fill this email? ðŸ˜‰")
+    .min(5, "Need a longer email ðŸ˜„"),
+  password: yup
+    .string()
+    .required("Why not fill this password? ðŸ˜‰")
+    .min(8, "Need a longer password ðŸ˜„")
+    .max(12, "Too much password ðŸ˜…"),
+});
+
+export function BasicForm() {
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: formValidationSchema,
+    onSubmit: (values) => {
+      console.log("onSubmit", values);
+    },
+  });
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        placeholder="email"
+      />
+      <br />
+      {formik.touched.email && formik.errors.email ? formik.errors.email : ""}
+
+
+
+
+
+
+
+
