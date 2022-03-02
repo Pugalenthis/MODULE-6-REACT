@@ -1034,7 +1034,52 @@ export function BasicForm() {
 
 
 
+CONTEXT;
 
+
+import { createContext, useContext } from "react";
+import "./styles.css";
+
+//1.  create -createContext
+//2.  provide -contextname.provider(userCtx.provider)
+//3. subscribe context
+
+const userCtx = createContext(null);
+
+export default function App() {
+  const name = "Nirmal 😎";
+  const url =
+    "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80";
+
+  return (
+    <div className="App">
+      <userCtx.Provider value={{ name, url }}>
+        <Dashboard />
+      </userCtx.Provider>
+    </div>
+  );
+}
+
+function Dashboard() {
+  return (
+    <div>
+      <h1>Welcome Dashboard 🎉</h1>
+
+      <User />
+    </div>
+  );
+}
+
+function User() {
+  const { name, url } = useContext(userCtx);
+
+  return (
+    <div>
+      <h1>Welcome {name} 😘</h1>
+      <img src={url}></img>
+    </div>
+  );
+}
 
 
 
